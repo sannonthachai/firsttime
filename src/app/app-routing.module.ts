@@ -5,7 +5,7 @@ import { DisplayUserDataComponent } from './display-user-data/display-user-data.
 
 const routes: Routes = [
       {path: '', component: InputUserDataFormComponent},
-      {path: 'user', component: DisplayUserDataComponent},
+      {path: 'customer', component: DisplayUserDataComponent},
       {path: '**', redirectTo: '', pathMatch: 'full'}
     ];
 
