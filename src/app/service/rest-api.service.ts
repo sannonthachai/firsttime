@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Customer } from '../models/customer'
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -16,6 +17,14 @@ export class RestApiService {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
     })
+  }
+
+  getCustomers(): Observable<Customer> {
+    return this.http.get<Customer>(this.apiURL + '/api/v1/customer')
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
   }
 
   handleError(error) {
