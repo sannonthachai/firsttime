@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RestApiService } from '../service/rest-api.service';
 
 @Component({
   selector: 'app-display-user-data',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DisplayUserDataComponent implements OnInit {
 
-  constructor() { }
+  constructor(private restApi: RestApiService) { }
 
   ngOnInit() {
+    return this.restApi.getCustomers().subscribe(result => {
+      alert(JSON.stringify(result));
+    });
   }
-
 }
