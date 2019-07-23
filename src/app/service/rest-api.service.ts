@@ -27,6 +27,14 @@ export class RestApiService {
     )
   }
 
+  createCustomer(customer): Observable<Customer> {
+    return this.http.post<Customer>(this.apiURL + '/api/v1/customer', JSON.stringify(customer), this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {

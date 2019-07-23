@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RestApiService } from '../service/rest-api.service';
 
 @Component({
   selector: 'app-input-user-data-form',
@@ -9,11 +11,13 @@ import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms'
 
 export class InputUserDataFormComponent implements OnInit {
 
+  @Input() customerDetails = { first_name: "", last_name: "", email: "", zipcode: "", password: ""}
+
   registered = false;
 	submitted = false;
 	userForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private restApi: RestApiService) { }
 
   invalidFirstName() {
   	return (this.submitted && this.userForm.controls.first_name.errors != null);
@@ -43,6 +47,12 @@ export class InputUserDataFormComponent implements OnInit {
   		zipcode: ['', [Validators.required, Validators.pattern('^[0-9]{5}(?:-[0-9]{4})?$')]],
   		password: ['', [Validators.required, Validators.minLength(5), Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]+$')]],
   	});
+  }
+
+  addCustomer(dataCustomer) {
+    this.restApi.createCustomer(this.customerDetails).subscribe((data: {}) => {
+      this.router.navigate([''])
+    })
   }
 
   onSubmit(){
