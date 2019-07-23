@@ -2,11 +2,12 @@
     <button [routerLink]="['customer']" type="button" class="btn btn-primary">ADD</button>
 </div>
 <div class="row mt-3">
-  <div class="card border-primary mb-3 m-auto" style="max-width: 40rem;">
-    <div class="card-header">Header</div>
+  <div *ngFor="let customer of Customer" class="card border-primary mb-3 m-auto" style="width: 40rem;">
+    <div class="card-header">ID : {{customer.id}}</div>
       <div class="card-body">
-        <h4 class="card-title">Primary card title</h4>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text">Firstname: {{customer.first_name}}</p>
+        <p class="card-text">Lastname: {{customer.last_name}}</p>
+        <p class="card-text">E-Mail: {{customer.email}}</p>
     </div>
   </div>
 </div>

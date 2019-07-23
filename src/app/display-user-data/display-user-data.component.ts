@@ -8,11 +8,17 @@ import { RestApiService } from '../service/rest-api.service';
 })
 export class DisplayUserDataComponent implements OnInit {
 
+  Customer: any = [];
+
   constructor(private restApi: RestApiService) { }
 
   ngOnInit() {
-    return this.restApi.getCustomers().subscribe(result => {
-      alert(JSON.stringify(result));
-    });
+    this.loadCustomers();
+  }
+
+  loadCustomers() {
+    return this.restApi.getCustomers().subscribe((data: {}) => {
+      this.Customer = data;
+    })
   }
 }
