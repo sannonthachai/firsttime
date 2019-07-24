@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RestApiService } from '../service/rest-api.service';
@@ -10,8 +10,6 @@ import { RestApiService } from '../service/rest-api.service';
 })
 
 export class InputUserDataFormComponent implements OnInit {
-
-  @Input() customerDetails = { first_name: "", last_name: "", email: "", zipcode: "", password: ""}
 
   registered = false;
 	submitted = false;
@@ -49,8 +47,9 @@ export class InputUserDataFormComponent implements OnInit {
   	});
   }
 
-  addCustomer(dataCustomer) {
-    this.restApi.createCustomer(this.customerDetails).subscribe((data: {}) => {
+  addCustomer() {
+    let customerDetails: any = Object.assign(this.userForm.value);
+    this.restApi.createCustomer(customerDetails).subscribe((data: {}) => {
       this.router.navigate([''])
     })
   }
@@ -62,6 +61,7 @@ export class InputUserDataFormComponent implements OnInit {
   		return;
   	}
   	else {
+      this.addCustomer();
   		this.registered = true;
   	}
   }
