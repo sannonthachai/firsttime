@@ -27,6 +27,14 @@ export class RestApiService {
     )
   }
 
+  getCustomer(id): Observable<Customer> {
+    return this.http.get<Customer>(this.apiURL + '/api/v1/customer' + id)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
   createCustomer(customer): Observable<Customer> {
     return this.http.post<Customer>(this.apiURL + '/api/v1/customer', JSON.stringify(customer), this.httpOptions)
     .pipe(
