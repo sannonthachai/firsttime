@@ -28,7 +28,7 @@ export class RestApiService {
   }
 
   getCustomer(id): Observable<Customer> {
-    return this.http.get<Customer>(this.apiURL + '/api/v1/customer' + id)
+    return this.http.get<Customer>(this.apiURL + '/api/v1/customer/' + id)
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -44,7 +44,7 @@ export class RestApiService {
   }
 
   updateCustomer(id, customer): Observable<Customer> {
-    return this.http.put<Customer>(this.apiURL + '/api/v1/customer' + id, JSON.stringify(customer), this.httpOptions)
+    return this.http.put<Customer>(this.apiURL + '/api/v1/customer/' + id, JSON.stringify(customer), this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)
@@ -52,7 +52,7 @@ export class RestApiService {
   }
 
   deleteCustomer(id): Observable<Customer> {
-    return this.http.delete<Customer>(this.apiURL + '/api/v1/customer' + id, this.httpOptions)
+    return this.http.delete<Customer>(this.apiURL + '/api/v1/customer/' + id, this.httpOptions)
     .pipe(
       retry(1),
       catchError(this.handleError)

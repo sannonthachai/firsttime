@@ -7,7 +7,7 @@ import { UpdateUserDataComponent } from './update-user-data/update-user-data.com
 const routes: Routes = [
       {path: '', component: DisplayUserDataComponent},
       {path: 'customer', component: InputUserDataFormComponent},
-      {path: 'update', component: UpdateUserDataComponent},
+      {path: 'update/:id', component: UpdateUserDataComponent},
       {path: '**', redirectTo: '', pathMatch: 'full'}
     ];
 

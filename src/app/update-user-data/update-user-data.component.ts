@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RestApiService } from '../service/rest-api.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-update-user-data',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UpdateUserDataComponent implements OnInit {
 
-  constructor() { }
+  Customer:any = {};
+  id = this.actRoute.snapshot.params['id'];
+
+  constructor(private restApi: RestApiService, private actRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.loadCustomer()
+  }
+
+  loadCustomer() {
+    return this.restApi.getCustomer(this.id).subscribe((data: {}) => {
+      this.Customer = data;
+    })
   }
 
 }

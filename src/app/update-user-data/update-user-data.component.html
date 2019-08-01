@@ -1,12 +1,12 @@
-<div class="row mt-5">
+<div *ngIf="Customer" class="row mt-5">
   <div class="card border-primary mb-3 m-auto" style="width: 40rem;">
-    <div class="card-header">ID : </div>
+    <div class="card-header">ID : {{Customer.id}}</div>
       <div class="card-body">
-        <p class="card-text">Firstname: </p>
-        <p class="card-text">Lastname: </p>
-        <p class="card-text">E-Mail: </p>
-        <p class="card-text">Zipcode: </p>
-        <p class="card-text">Password: </p>
+        <p class="card-text">Firstname: {{Customer.first_name}}</p>
+        <p class="card-text">Lastname: {{Customer.last_name}}</p>
+        <p class="card-text">E-Mail: {{Customer.email}}</p>
+        <p class="card-text">Zipcode: {{Customer.zipcode}}</p>
+        <p class="card-text">Password: {{Customer.password}}</p>
     </div>
   </div>
 </div>
