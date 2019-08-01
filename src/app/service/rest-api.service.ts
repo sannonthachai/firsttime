@@ -43,6 +43,22 @@ export class RestApiService {
     )
   }
 
+  updateCustomer(id, customer): Observable<Customer> {
+    return this.http.put<Customer>(this.apiURL + '/api/v1/customer' + id, JSON.stringify(customer), this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
+  deleteCustomer(id): Observable<Customer> {
+    return this.http.delete<Customer>(this.apiURL + '/api/v1/customer' + id, this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
   handleError(error) {
     let errorMessage = '';
     if(error.error instanceof ErrorEvent) {
