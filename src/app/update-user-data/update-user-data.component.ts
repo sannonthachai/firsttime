@@ -12,6 +12,8 @@ export class UpdateUserDataComponent implements OnInit {
   Customer:any = {};
   id = this.actRoute.snapshot.params['id'];
 
+  enableEdit: boolean = false;
+
   constructor(private restApi: RestApiService, private actRoute: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {

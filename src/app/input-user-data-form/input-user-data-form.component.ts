@@ -11,8 +11,8 @@ import { RestApiService } from '../service/rest-api.service';
 
 export class InputUserDataFormComponent implements OnInit {
 
-  registered = false;
-	submitted = false;
+  registered: boolean = false;
+	submitted: boolean = false;
 	userForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private restApi: RestApiService) { }

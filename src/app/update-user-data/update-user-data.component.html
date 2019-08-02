@@ -6,33 +6,33 @@
         <div class="form-group row">
           <label for="first_name" class="col-sm-2 col-form-label">Firstname</label>
           <div class="col-sm-10">
-            <input type="text" readonly="" class="form-control-plaintext" id="staticEmail"
+            <input type="text" readonly="" class="form-control-plaintext" id="first_name"
               value="{{Customer.first_name}}">
           </div>
         </div>
         <div class="form-group row">
           <label for="last_name" class="col-sm-2 col-form-label">Lastname</label>
           <div class="col-sm-10">
-            <input type="text" readonly="" class="form-control-plaintext" id="staticEmail"
+            <input type="text" readonly="" class="form-control-plaintext" id="last_name"
               value="{{Customer.last_name}}">
           </div>
         </div>
         <div class="form-group row">
           <label for="email" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
-            <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="{{Customer.email}}">
+            <input type="text" readonly="" class="form-control-plaintext" id="email" value="{{Customer.email}}">
           </div>
         </div>
         <div class="form-group row">
           <label for="zipcode" class="col-sm-2 col-form-label">Zipcode</label>
           <div class="col-sm-10">
-            <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="{{Customer.zipcode}}">
+            <input type="text" readonly="" class="form-control-plaintext" id="zipcode" value="{{Customer.zipcode}}">
           </div>
         </div>
         <div class="form-group row">
           <label for="password" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
-            <input type="text" readonly="" class="form-control-plaintext" id="staticEmail"
+            <input type="text" readonly="" class="form-control-plaintext" id="password"
               value="{{Customer.password}}">
           </div>
         </div>
@@ -42,12 +42,20 @@
 </div>
 <div class="row justify-content-center">
 
+  <div class="mt-3">
+    <button *ngIf="!enableEdit" (click)="enableEdit = true" type="button" class="btn btn-primary">Edit</button>
+  </div>
+
   <div class="mt-3 mr-2">
-    <button type="button" class="btn btn-primary">Update</button>
+    <button *ngIf="enableEdit" type="button" class="btn btn-primary">Save</button>
   </div>
 
   <div class="mt-3">
-    <button type="button" class="btn btn-info" (click)="deleteCustomer()">Delete</button>
+    <button *ngIf="enableEdit" (click)="enableEdit = false" type="button" class="btn btn-secondary">Cancel</button>
+  </div>
+
+  <div class="mt-3">
+    <button *ngIf="!enableEdit" type="button" class="btn btn-info" (click)="deleteCustomer()">Delete</button>
   </div>
 
 </div>
