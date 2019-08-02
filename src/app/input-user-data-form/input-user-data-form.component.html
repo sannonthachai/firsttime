@@ -32,7 +32,7 @@
 			
 				<div class="form-group"> <!-- Password -->
 				<label for="password" class="form-control-label">Password</label>
-				<input formControlName="password" type="password" class="form-control" [ngClass]="{ 'is-invalid': invalidPassword() }" id="password" name="password" placeholder="Password">
+				<input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': invalidPassword() }" id="password" name="password" placeholder="Password">
 				<div *ngIf="invalidPassword()" id="password_error" class="invalid-feedback">Invalid password.</div>
 				</div>
 			

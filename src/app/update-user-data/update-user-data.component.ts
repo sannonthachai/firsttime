@@ -34,4 +34,19 @@ export class UpdateUserDataComponent implements OnInit {
     }
   }
 
+  updateCustomer() {
+    return this.restApi.updateCustomer(this.id, this.Customer).subscribe(data => {
+      window.alert('Update Success!')
+      this.router.navigate([''])
+    })
+  }
+
+  editClick() {
+    this.enableEdit = true;
+  }
+
+  cancelClick() {
+    this.enableEdit = false;
+  }
+
 }

@@ -49,7 +49,7 @@ export class InputUserDataFormComponent implements OnInit {
 
   addCustomer() {
     let customerDetails: any = Object.assign(this.userForm.value);
-    this.restApi.createCustomer(customerDetails).subscribe((data: {}) => {
+    return this.restApi.createCustomer(customerDetails).subscribe((data: {}) => {
       this.router.navigate([''])
     })
   }
