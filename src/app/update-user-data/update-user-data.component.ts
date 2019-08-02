@@ -24,4 +24,12 @@ export class UpdateUserDataComponent implements OnInit {
     })
   }
 
+  deleteCustomer() {
+    if (window.confirm('Are you sure, you want to delete?')) {
+      this.restApi.deleteCustomer(this.id).subscribe(data => {
+        this.router.navigate([''])
+      })
+    }
+  }
+
 }
