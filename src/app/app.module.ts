@@ -10,13 +10,17 @@ import { AppComponent } from './app.component';
 import { DisplayUserDataComponent } from './display-user-data/display-user-data.component';
 import { InputUserDataFormComponent } from './input-user-data-form/input-user-data-form.component';
 import { UpdateUserDataComponent } from './update-user-data/update-user-data.component';
+import { LoginUserComponent } from './login-user/login-user.component';
+import { RegisterUserComponent } from './register-user/register-user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DisplayUserDataComponent,
     InputUserDataFormComponent,
-    UpdateUserDataComponent
+    UpdateUserDataComponent,
+    LoginUserComponent,
+    RegisterUserComponent
   ],
   imports: [
     BrowserModule,

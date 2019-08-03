@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Customer } from '../models/customer'
+import { User } from '../models/user'
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 
@@ -58,6 +59,16 @@ export class RestApiService {
       catchError(this.handleError)
     )
   }
+
+  createUser(user): Observable<User> {
+    return this.http.post<User>(this.apiURL = '/api/v1/auth/register', JSON.stringify(user), this.httpOptions)
+    .pipe(
+      retry(1),
+      catchError(this.handleError)
+    )
+  }
+
+  // createUser()
 
   handleError(error) {
     let errorMessage = '';
