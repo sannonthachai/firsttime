@@ -13,32 +13,32 @@ export class InputUserDataFormComponent implements OnInit {
 
   registered: boolean = false;
 	submitted: boolean = false;
-	userForm: FormGroup;
+	customerForm: FormGroup;
 
   constructor(private formBuilder: FormBuilder, private router: Router, private restApi: RestApiService) { }
 
   invalidFirstName() {
-  	return (this.submitted && this.userForm.controls.first_name.errors != null);
+  	return (this.submitted && this.customerForm.controls.first_name.errors != null);
   }
 
   invalidLastName() {
-  	return (this.submitted && this.userForm.controls.last_name.errors != null);
+  	return (this.submitted && this.customerForm.controls.last_name.errors != null);
   }
 
   invalidEmail() {
-  	return (this.submitted && this.userForm.controls.email.errors != null);
+  	return (this.submitted && this.customerForm.controls.email.errors != null);
   }
 
   invalidZipcode() {
-  	return (this.submitted && this.userForm.controls.zipcode.errors != null);
+  	return (this.submitted && this.customerForm.controls.zipcode.errors != null);
   }
 
   invalidPassword() {
-  	return (this.submitted && this.userForm.controls.password.errors != null);
+  	return (this.submitted && this.customerForm.controls.password.errors != null);
   }
 
   ngOnInit() {
-    this.userForm = this.formBuilder.group({
+    this.customerForm = this.formBuilder.group({
   		first_name: ['', Validators.required],
   		last_name: ['', Validators.required],
   		email: ['', [Validators.required, Validators.email]],
@@ -48,7 +48,7 @@ export class InputUserDataFormComponent implements OnInit {
   }
 
   addCustomer() {
-    let customerDetails: any = Object.assign(this.userForm.value);
+    let customerDetails: any = Object.assign(this.customerForm.value);
     return this.restApi.createCustomer(customerDetails).subscribe((data: {}) => {
       this.router.navigate([''])
     })
@@ -57,7 +57,7 @@ export class InputUserDataFormComponent implements OnInit {
   onSubmit(){
   	this.submitted = true;
 
-  	if(this.userForm.invalid == true) {
+  	if(this.customerForm.invalid == true) {
   		return;
   	}
   	else {
